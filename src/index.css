@@ -1,0 +1,77 @@
+ @tailwind base;
+ @tailwind components;
+ @tailwind utilities;
+ 
+ /* Import Google Fonts */
+ @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Open+Sans:wght@400;600;700&display=swap');
+ 
+ :root {
+   font-family: 'Roboto', 'Open Sans', sans-serif;
+   line-height: 1.5;
+   font-weight: 400;
+ 
+   font-synthesis: none;
+   text-rendering: optimizeLegibility;
+   -webkit-font-smoothing: antialiased;
+   -moz-osx-font-smoothing: grayscale;
+ 
+   /* Custom colors */
+   --color-primary: #165DFF;
+   --color-secondary: #00CFFD;
+   --color-tertiary: #7B61FF;
+   --color-dark-bg: #1D2129;
+   --color-dark-text: #F5F7FA;
+ }
+ 
+ /* Custom utilities */
+ @layer utilities {
+   .content-auto {
+     content-visibility: auto;
+   }
+   .backdrop-blur-sm {
+     backdrop-filter: blur(10px);
+   }
+   .text-gradient {
+     background-clip: text;
+     -webkit-background-clip: text;
+     -webkit-text-fill-color: transparent;
+   }
+   .animate-fadeIn {
+     animation: fadeIn 0.3s ease-in-out;
+   }
+ }
+ 
+ /* Custom animations */
+ @keyframes fadeIn {
+   from { opacity: 0; }
+   to { opacity: 1; }
+ }
+ 
+ /* Base styles */
+ body {
+   @apply bg-white text-gray-900 dark:bg-gray-900 dark:text-white transition-colors duration-300;
+ }
+ 
+ /* Smooth scrolling */
+ html {
+   scroll-behavior: smooth;
+ }
+ 
+ /* Hide scrollbar but keep functionality */
+ ::-webkit-scrollbar {
+   width: 6px;
+   height: 6px;
+ }
+ 
+ ::-webkit-scrollbar-track {
+   background: transparent;
+ }
+ 
+ ::-webkit-scrollbar-thumb {
+   background: rgba(100, 100, 100, 0.3);
+   border-radius: 3px;
+ }
+ 
+ ::-webkit-scrollbar-thumb:hover {
+   background: rgba(100, 100, 100, 0.5);
+ }
