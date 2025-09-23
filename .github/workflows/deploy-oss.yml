@@ -1,0 +1,53 @@
+name: Deploy to Alibaba Cloud OSS (static export)
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup PNPM
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: 'pnpm'
+
+      - name: Install deps
+        run: pnpm i --frozen-lockfile
+
+      - name: Build (Next export)
+        run: |
+          pnpm build
+          npx next export -o out
+
+      - name: Download ossutil
+        run: |
+          curl -L https://gosspublic.alicdn.com/ossutil/1.7.21/ossutil64 -o ossutil
+          chmod +x ossutil
+
+      - name: Configure ossutil
+        run: |
+          ./ossutil config -e ${{ secrets.OSS_ENDPOINT }} -i ${{ secrets.OSS_KEY_ID }} -k ${{ secrets.OSS_KEY_SECRET }} -L CH
+
+      - name: Sync to OSS bucket
+        run: |
+          ./ossutil rm oss://${{ secrets.OSS_BUCKET }}/ -r -f || true
+          ./ossutil cp out/ oss://${{ secrets.OSS_BUCKET }}/ -r -f
+
+      # 可选：如接入了阿里云CDN，可在此添加刷新操作
+      # - name: Purge CDN
+      #   run: echo "Call CDN refresh API here"
+
+

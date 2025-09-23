@@ -1,10 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: 'export',
   transpilePackages: ['framer-motion'],
   experimental: {
     optimizePackageImports: ['lucide-react']
   },
   images: {
+    unoptimized: true,
     remotePatterns: [
       {
         protocol: 'https',
