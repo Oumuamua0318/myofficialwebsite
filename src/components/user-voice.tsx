@@ -89,23 +89,27 @@ export function UserVoice() {
     return () => window.removeEventListener('resize', handleResize)
   }, [])
 
-  // 上一张
+  // 根据可见卡片数量计算页数与当前页
+  const pageCount = Math.ceil(userVoices.length / visibleSlides)
+  const currentPage = Math.floor(currentIndex / visibleSlides)
+
+  // 上一页
   function prevSlide() {
-    setCurrentIndex((prev) => 
-      prev === 0 ? userVoices.length - visibleSlides : prev - 1
+    setCurrentIndex((prev) =>
+      prev === 0 ? (pageCount - 1) * visibleSlides : prev - visibleSlides
     )
   }
 
-  // 下一张
+  // 下一页
   function nextSlide() {
-    setCurrentIndex((prev) => 
-      prev >= userVoices.length - visibleSlides ? 0 : prev + 1
+    setCurrentIndex((prev) =>
+      prev >= (pageCount - 1) * visibleSlides ? 0 : prev + visibleSlides
     )
   }
 
   // 跳转到指定 slide
   function goToSlide(index: number) {
-    setCurrentIndex(index)
+    setCurrentIndex(index * visibleSlides)
   }
 
   // 触摸滑动相关状态
@@ -131,7 +135,7 @@ export function UserVoice() {
   }
 
   return (
-    <section id="voices" className="py-20 bg-background">
+    <section id="voices" className="py-20 bg-background scroll-mt-24 md:scroll-mt-28">
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center mb-16">
           <motion.h2
@@ -221,12 +225,12 @@ export function UserVoice() {
           
           {/* 指示器 */}
           <div className="flex justify-center mt-8 space-x-2">
-            {[...Array(Math.ceil(userVoices.length / visibleSlides))].map((_, index) => (
+            {[...Array(pageCount)].map((_, index) => (
               <button
                 key={index}
                 onClick={() => goToSlide(index)}
                 className={`h-3 rounded-full transition-all duration-300 ${
-                  currentIndex === index 
+                  currentPage === index 
                     ? "bg-blue-500 w-8 shadow-lg shadow-blue-500/25" 
                     : "bg-white/30 w-3 hover:bg-white/50"
                 }`}

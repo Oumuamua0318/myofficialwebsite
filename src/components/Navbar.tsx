@@ -42,13 +42,13 @@ interface NavbarProps {
 export default function Navbar({
   logo = <CompanyLogo />,
   name = siteConfig.name,
-  homeUrl = siteConfig.url,
+  homeUrl = "/",
   mobileLinks = [
     { text: "首页", href: "/" },
     { text: "走进智能体", href: "/zou-jin-zhi-neng-ti" },
-    { text: "服务板块", href: "/服务板块" },
-    { text: "用户声音", href: "/用户声音" },
-    { text: "联系我们", href: "/联系我们" },
+    { text: "服务板块", href: "/#services" },
+    { text: "用户声音", href: "/#voices" },
+    { text: "联系我们", href: "/#contact" },
   ],
   actions = [],
   showNavigation = true,

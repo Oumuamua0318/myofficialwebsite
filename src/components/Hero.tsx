@@ -36,7 +36,7 @@ export default function Hero({
   badge = false,
   buttons = [
     {
-      href: siteConfig.getStartedUrl,
+      href: "/#services",
       text: "探索解决方案",
       variant: "outline-glow",
     },
