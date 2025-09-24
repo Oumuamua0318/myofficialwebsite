@@ -22,6 +22,7 @@ const buttonVariants = cva(
         gradient: "bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow hover:shadow-lg hover:scale-105 transition-all duration-300",
         glow: "bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-lg hover:shadow-xl hover:shadow-blue-500/25 transition-all duration-300",
         "outline-glow": "border-2 border-blue-500/80 bg-transparent text-blue-400 shadow-lg hover:shadow-xl hover:shadow-blue-500/30 hover:bg-blue-500/5 hover:text-blue-300 hover:border-blue-400 transition-all duration-300 backdrop-blur-sm",
+        "outline-gray": "border-2 border-gray-500/80 bg-transparent text-gray-400 shadow-lg hover:shadow-xl hover:shadow-gray-500/30 hover:bg-gray-500/5 hover:text-gray-300 hover:border-gray-400 transition-all duration-300 backdrop-blur-sm",
       },
       size: {
         default: "h-9 px-4 py-2",

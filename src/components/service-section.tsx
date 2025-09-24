@@ -162,7 +162,7 @@ function ServiceCard({ service, index, onViewDetails }: ServiceCardProps) {
           <div className="mt-auto pt-4">
             <Button
               onClick={() => onViewDetails(service.id)}
-              variant="outline-glow"
+              variant="outline-gray"
               className="w-full"
             >
               查看详情
@@ -188,7 +188,7 @@ export function ServiceSection() {
 
   // 选中服务变化时，滚动到区块顶部，避免视口停留在底部
   useEffect(() => {
-    if (sectionRef.current) {
+    if (selectedService && sectionRef.current) {
       sectionRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' })
     }
   }, [selectedService])
@@ -245,7 +245,7 @@ export function ServiceSection() {
                 <div className="flex justify-between items-center mb-6">
                   <Button
                     onClick={handleBack}
-                    variant="outline-glow"
+                    variant="outline-gray"
                     className="inline-flex items-center"
                   >
                     <ArrowLeft className="mr-2 h-4 w-4" />
@@ -289,7 +289,7 @@ export function ServiceSection() {
                       <div className="flex justify-end mt-8">
                         <Button
                           onClick={() => handleViewDetails(currentService.id + 1)}
-                          variant="outline-glow"
+                          variant="outline-gray"
                           className="inline-flex items-center"
                         >
                           下一页

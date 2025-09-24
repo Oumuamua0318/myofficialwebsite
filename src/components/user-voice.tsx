@@ -204,7 +204,7 @@ export function UserVoice() {
           <div className="flex justify-center mt-12 space-x-4">
             <Button
               onClick={prevSlide}
-              variant="outline-glow"
+              variant="outline-gray"
               size="icon"
               className="w-12 h-12 rounded-full"
               aria-label="上一页"
@@ -214,7 +214,7 @@ export function UserVoice() {
             
             <Button
               onClick={nextSlide}
-              variant="outline-glow"
+              variant="outline-gray"
               size="icon"
               className="w-12 h-12 rounded-full"
               aria-label="下一页"

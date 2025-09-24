@@ -109,7 +109,7 @@ export function ContactPage() {
               <Button
                 onClick={() => setShowQrCode(true)}
                 size="lg"
-                variant="outline-glow"
+                variant="outline-gray"
                 className="group"
               >
                 联系方式

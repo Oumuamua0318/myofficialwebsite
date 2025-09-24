@@ -36,9 +36,9 @@ export default function Hero({
   badge = false,
   buttons = [
     {
-      href: "/#services",
+      href: "#services",
       text: "探索解决方案",
-      variant: "outline-glow",
+      variant: "outline-gray",
     },
     
   ],
